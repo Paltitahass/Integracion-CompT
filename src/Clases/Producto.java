@@ -35,7 +35,7 @@ public class Producto {
         return Categoria;
     }
 
-    System.out.println("Chupalo");
+    System.out.println("Chupaloooo");
  
     public void mostrar_producto() {
         System.out.println("Nombre: " +get_nombre());
