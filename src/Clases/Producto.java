@@ -34,7 +34,9 @@ public class Producto {
     public String get_categoria(){
         return Categoria;
     }
-    
+
+    System.out.println("Chupalo");
+ 
     public void mostrar_producto() {
         System.out.println("Nombre: " +get_nombre());
         System.out.println("Descripción: " +get_descripcion());
