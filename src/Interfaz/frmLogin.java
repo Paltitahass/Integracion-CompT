@@ -24,7 +24,7 @@ public class frmLogin extends javax.swing.JFrame {
             char[] passwordArreglo = pwdClave.getPassword();
             String clave = new String(passwordArreglo);
 
-            String sql_consulta = "SELECT * FROM Usuarios WHERE Nombre_Usuario=? AND Contraseña=?";
+            String sql_consulta = "SELECT * FROM usuario WHERE Nombre_Usuario=? AND Clave_Usuario=?";
             PreparedStatement datos = obj_conexion.establecer_conexion().prepareStatement(sql_consulta);
             datos.setString(1, usuario);
             datos.setString(2, clave);
@@ -34,27 +34,13 @@ public class frmLogin extends javax.swing.JFrame {
                 this.setVisible(false);
                 frmInicio obj_inicio = new frmInicio();
                 obj_inicio.setVisible(true);
-                obj_inicio.lblUsuario.setText("Bienvenido, " + obj_controlador.resultado.getString("Nombre_Usuario"));
+                obj_inicio.lblUsuario.setText("Bienvenido, " + obj_controlador.resultado.getString("Tipo_Usuario"));
 
-                //Si el resultado es un tipo de usuario como Usuario, se bloquearan ciertas funciones
                 if (obj_controlador.resultado.getString("Tipo_Usuario").equals("Usuario")) {
-                    obj_libros.btnEliminar.setEnabled(false);
-                    obj_libros.btnModificar.setEnabled(false);
-                    obj_libros.btnGuardar.setEnabled(false);
-                    obj_libros.tblListado.setEnabled(false);
-                    obj_libros.srcListado.setEnabled(false);
-                    obj_libros.btnLimpiar.setEnabled(true);
-                    obj_libros.btnBuscar.setEnabled(true);
-
-                    //Si el resutlado es un tipo de usuario como SuperUsuario, se habilitaran todas las funciones    
+                    
+    
                     if (obj_controlador.resultado.getString("Tipo_Usuario").equals("SuperUsuario")) {
-                        obj_libros.btnEliminar.setEnabled(true);
-                        obj_libros.btnModificar.setEnabled(true);
-                        obj_libros.btnGuardar.setEnabled(true);
-                        obj_libros.tblListado.setEnabled(true);
-                        obj_libros.srcListado.setEnabled(true);
-                        obj_libros.btnLimpiar.setEnabled(true);
-                        obj_libros.btnBuscar.setEnabled(true);
+                   
                     }
                 }
             } else {
